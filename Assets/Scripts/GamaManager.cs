@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GamaManager : MonoBehaviour
 {
     public GameObject pauseScreen;
-
+    // add score keeping here
 
     public void ResumeGame()
     {
