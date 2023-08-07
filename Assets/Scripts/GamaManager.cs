@@ -18,4 +18,11 @@ public class GamaManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Wall")) {
+            other.gameObject.SetActive(false);
+        }
+	}
 }
