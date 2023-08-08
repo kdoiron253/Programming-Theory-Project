@@ -30,16 +30,11 @@ public class SpawnManager : MonoBehaviour
        
         if (wallObstacleTimer > randomWallSpawnTimer && !ObstacleRegularWall.isHit && wallCounter < wallCounterMax) {
             SpawnWallObstacle();
-            wallCounter++;
-            wallObstacleTimer = 0;
-            RandomSpawnTimerGenerator();
+            
         
         } else if (wallObstacleTimer > randomWallSpawnTimer && wallCounter == wallCounterMax) {
 			SpawnEndWall();
-			wallCounter = 0;
-			wallObstacleTimer = 1;
-			RandomSpawnTimerGenerator();
-			// call random color picker
+			
 		} else {
             wallObstacleTimer += Time.deltaTime;
         }
@@ -57,7 +52,11 @@ public class SpawnManager : MonoBehaviour
             wallObstacle.transform.rotation = wallObstacle.transform.rotation;
             wallObstacle.SetActive(transform);
         }
-    }
+
+		wallCounter++;
+		wallObstacleTimer = 0;
+		RandomSpawnTimerGenerator();
+	}
 
     private Vector3 SpawnPositionGenerator()
     {
@@ -73,6 +72,10 @@ public class SpawnManager : MonoBehaviour
     {
 		Vector3 spawnPosition = SpawnPositionGenerator();
         Instantiate(endWall, spawnPosition, endWall.transform.rotation);
+
+		wallCounter = 0;
+		wallObstacleTimer = 1;
+		RandomSpawnTimerGenerator();
 
 	}
 

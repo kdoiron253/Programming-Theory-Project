@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,10 +9,14 @@ public class GamaManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject gameOverScreen;
     // add score keeping here
+    public TextMeshProUGUI scoreText;
+    private int scoreCounter;
+    private int counter = 0;
 
 	private void Start()
 	{
 		gameOverScreen.gameObject.SetActive(false);
+        scoreCounter = 0;
 	}
 
 	private void Update()
@@ -32,15 +37,19 @@ public class GamaManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-	private void OnTriggerEnter(Collider other)
-	{
-		if (other.CompareTag("Wall")) {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Wall")) {
             other.gameObject.SetActive(false);
         }
-	}
 
-    // ABSTRACTION
-    private void GameOver()
+        scoreCounter ++;
+        scoreText.SetText("Score: " + scoreCounter);
+        
+    }
+
+	// ABSTRACTION
+	private void GameOver()
     {
 		gameOverScreen.gameObject.SetActive(true);
 	}

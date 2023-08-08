@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class ObstacleEndWall : ObstacleParent
 {
-    // change colors of next walls, random color picker? Send color to other wall
-    // use get;set to give out color
+	private static new int value;
+	public static new string wallName = "EndWall";
 
-    private void RandomColorPicker()
-    {
+	// INHERITANCE
+	private void Awake()
+	{
+		Setvalue();
+	}
 
-    }
+	public static int Getvalue()
+	{
+		return value;
+	}
+
+	private static void Setvalue()
+	{
+		value = 5;
+	}
+
 }

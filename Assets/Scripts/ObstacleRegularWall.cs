@@ -5,10 +5,24 @@ using UnityEngine;
 public class ObstacleRegularWall : ObstacleParent
 {
 	// INHERITANCE
-	public Color color;
 
-	private void ChangeColor()
+	public static new string wallName = "RegularWall";
+	private static new int value;
+
+	private void Awake()
 	{
-		// change color based on level, get color from end wall
+		Setvalue();
 	}
+
+	public static int Getvalue()
+	{
+		return value;
+	}
+
+	private static void Setvalue()
+	{
+		value = 2;
+	}
+
+
 }
