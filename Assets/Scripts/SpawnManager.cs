@@ -21,16 +21,19 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (wallObstacleTimer > randomWallSpawnTimer) {
+        // make sure a wall hasn't been hit, then spawn more walls
+        if (wallObstacleTimer > randomWallSpawnTimer && !ObstacleRegularWall.isHit) {
             SpawnWallObstacle();
             wallObstacleTimer = 0;
             RandomSpawnTimerGenerator();
         } else {
             wallObstacleTimer += Time.deltaTime;
         }
+        
     }
 
-    private void SpawnWallObstacle()
+	// ABSTRACTION
+	private void SpawnWallObstacle()
     {
         float randomY = Random.Range(-spawnRangeY, spawnRangeY);
 

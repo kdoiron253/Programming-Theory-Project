@@ -19,17 +19,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        verticalInput = Input.GetAxis("Vertical");
+        if (!ObstacleRegularWall.isHit) {
+            verticalInput = Input.GetAxis("Vertical");
 
-        playerRb.AddForce(Vector3.up * verticalInput, ForceMode.Impulse);
+            playerRb.AddForce(Vector3.up * verticalInput, ForceMode.Impulse);
 
-        if (transform.position.y > yMax) {
-            playerRb.AddForce(Vector3.down, ForceMode.Impulse);
+            if (transform.position.y > yMax) {
+                playerRb.AddForce(Vector3.down, ForceMode.Impulse);
+            }
+
+            if (transform.position.y < yMin) {
+                playerRb.AddForce(Vector3.up, ForceMode.Impulse);
+            }
         }
-
-        if (transform.position.y < yMin) {
-			playerRb.AddForce(Vector3.up, ForceMode.Impulse);
-		}
-
 	}
 }
