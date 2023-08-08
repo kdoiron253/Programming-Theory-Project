@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObstacleParent : MonoBehaviour
 {
     private Rigidbody obstacleRigidBody;
-    // private float forceMultiplier = 3f;
     private float moveSpeed = 3f;
     private Vector3 moveAxis;
     // ENCAPSULATION

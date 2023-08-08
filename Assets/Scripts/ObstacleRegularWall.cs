@@ -9,6 +9,6 @@ public class ObstacleRegularWall : ObstacleParent
 
 	private void ChangeColor()
 	{
-		// change color based on level
+		// change color based on level, get color from end wall
 	}
 }
